@@ -1,19 +1,35 @@
+import java.util.ArrayList;
+import java.util.Collections;
 
-public class part1 {
+public class Part2 {
   public static void main(String[] args) {
     final String puzzleInput = new PuzzleInput().puzzleInput;
     String[] elfInventories = giveElfInventoryArray(puzzleInput);
 
-    int highestCalorieInventory = 0;
+    ArrayList<Integer> allCalorieCounts = new ArrayList<Integer>();
 
     for (String inventory : elfInventories) {
-      int currentInvCalorieCount = giveCalorieCount(inventory);
-      if (highestCalorieInventory < currentInvCalorieCount) {
-        highestCalorieInventory = currentInvCalorieCount;
-      }
+      allCalorieCounts.add(giveCalorieCount(inventory));
     }
-    System.out.println("Inventory with highest caloriecount: " + Integer.toString(highestCalorieInventory));
+    Collections.sort(allCalorieCounts, Collections.reverseOrder());
+
+
+    int topThreeSummed = 0;
+    for (int i = 0; i < 3; i++) {
+      topThreeSummed += allCalorieCounts.get(i);
+    }
+
+    System.out.println(topThreeSummed);
+    // printArr(allCalorieCounts);
+
   }
+
+  public static void printArr(ArrayList<Integer> toPrint) {
+    for (Integer entry : toPrint) {
+      System.out.println(entry);
+    }
+  }
+
 
   public static String[] giveElfInventoryArray(String fullString) {
     // ArrayList<String> ElfInventoryList = new ArrayList<String>();
