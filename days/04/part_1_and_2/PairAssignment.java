@@ -19,4 +19,16 @@ public class PairAssignment {
 
         return (fs <= ss && se <= fe) || (ss <= fs && fe <= se);
     }
+    public boolean hasOverlappingRanges() {
+        int fs = firstRange.giveStart(); // fs-fe, ss-se
+        int fe = firstRange.giveEnd();
+        int ss = secondRange.giveStart();
+        int se = secondRange.giveEnd();
+
+        if (((ss <= fe && fs <= ss) || (fs <= se && ss <= fs)) || hasSelfContainingRanges()) {
+            printAssignment();
+            return true;
+        }
+        return false;
+    }
 }

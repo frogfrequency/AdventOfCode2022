@@ -6,11 +6,11 @@ public class Solution {
         int counter = 0;
 
         for (PairAssignment assignment : assignments) {
-            if (assignment.hasSelfContainingRanges()) {
+            if (assignment.hasOverlappingRanges()) {
                 counter++;
             }
         }
-        System.out.println(counter);
+        System.out.println(counter); // 1000 is too high
     }
     
 }
